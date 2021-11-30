@@ -1,0 +1,31 @@
+name: "Test actions/delete-package-versions@v2"
+
+on:
+  pull_request:
+    branches:
+    - main
+  workflow_dispatch:
+  schedule:
+  - cron:  '0 0 * * *'
+
+jobs:
+  make-versions:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: ./make-versions.sh
+      env:
+        CR_PAT: ${{ secrets.GITHUB_TOKEN }}
+        USERNAME: nokamoto
+    - uses: actions/delete-package-versions@v2
+      with: 
+        owner: nokamoto
+        repo: delete-ghcr-versions
+        package-name: delete-ghcr-version/test-version
+        token: ${{ secrets.GITHUB_TOKEN }}
+        num-old-versions-to-delete: 99
+    - run: docker pull ghcr.io/nokamoto/delete-ghcr-version/test-version:latest
+    - uses: actions/github-script@v3
+      with:
+        script: core.setFailed('actions/delete-package-versions@v2 delete ghcr.io/nokamoto/delete-ghcr-version/test-version:latest')
+      if: ${{ failure() }}
