@@ -22,4 +22,4 @@ jobs:
         owner: nokamoto
         repo: delete-ghcr-versions
         package-name: delete-ghcr-version/test-version
-        token: ${{ secrets.GITHUB_PAT }}
+        token: ${{ secrets.GITHUB_TOKEN }}
