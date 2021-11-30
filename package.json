@@ -1,0 +1,40 @@
+{
+  "name": "delete-ghcr-versions",
+  "version": "0.0.0",
+  "description": "Delete GitHub Container Registry versions",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "tsc",
+    "package": "ncc build",
+    "format": "prettier --write '**/*.ts'",
+    "lint": "eslint src/**/*.ts",
+    "test": "jest",
+    "all": "npm run format && npm run lint && npm run build && npm run package && npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nokamoto/delete-ghcr-versions.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nokamoto/delete-ghcr-versions/issues"
+  },
+  "homepage": "https://github.com/nokamoto/delete-ghcr-versions#readme",
+  "devDependencies": {
+    "@types/jest": "^27.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "@vercel/ncc": "^0.32.0",
+    "eslint": "^8.3.0",
+    "eslint-config-prettier": "^8.3.0",
+    "jest": "^27.4.0",
+    "prettier": "2.5.0",
+    "ts-jest": "^27.0.7",
+    "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "@actions/github": "^5.0.0"
+  }
+}
