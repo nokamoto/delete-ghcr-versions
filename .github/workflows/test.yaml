@@ -23,3 +23,5 @@ jobs:
         repo: delete-ghcr-versions
         package-name: delete-ghcr-version/test-version
         token: ${{ secrets.GITHUB_TOKEN }}
+        num-old-versions-to-delete: 99
+    - run: docker pull ghcr.io/nokamoto/delete-ghcr-version/test-version:latest
