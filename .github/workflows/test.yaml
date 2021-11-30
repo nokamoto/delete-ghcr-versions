@@ -3,7 +3,7 @@ name: "Test actions/delete-package-versions@v2"
 on:
   pull_request:
     branches:
-    - master
+    - main
   workflow_dispatch:
   schedule:
   - cron:  '0 0 * * *'
