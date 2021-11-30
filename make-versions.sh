@@ -11,6 +11,6 @@ set -eux
 echo $CR_PAT | docker login ghcr.io -u $USERNAME --password-stdin
 
 for TAG in (v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 latest); do
-    docker build --build-args VERSION=$TAG -t ghcr.io/$USERNAME/test-version:$TAG .
-    docker push ghcr.io/$USERNAME/test-version:$TAG
+    docker build --build-args VERSION=$TAG -t ghcr.io/$USERNAME/delete-ghcr-version/test-version:$TAG .
+    docker push ghcr.io/$USERNAME/delete-ghcr-version/test-version:$TAG
 done
