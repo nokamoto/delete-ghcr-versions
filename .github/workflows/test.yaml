@@ -1,4 +1,4 @@
-name: "Test actions/delete-package-versions@v2"
+name: "Build delete-ghcr-versions"
 
 on:
   pull_request:
@@ -9,7 +9,7 @@ on:
   - cron:  '0 0 * * *'
 
 jobs:
-  make-versions:
+  actions/delete-package-versions@v2:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -29,3 +29,18 @@ jobs:
       with:
         script: core.setFailed('actions/delete-package-versions@v2 delete ghcr.io/nokamoto/delete-ghcr-version/test-version:latest')
       if: ${{ failure() }}
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+    - run: npm install
+    - run: npm run all
+    - run: git diff --exit-code
+  dryrun:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ./
