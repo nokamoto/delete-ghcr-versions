@@ -22,7 +22,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         num-old-versions-to-delete: 99
     - run: docker pull ghcr.io/nokamoto/delete-ghcr-version/test-version:latest
-    - uses: actions/github-script@v3
+    - uses: actions/github-script@v5
       with:
         script: core.setFailed('actions/delete-package-versions@v2 delete ghcr.io/nokamoto/delete-ghcr-version/test-version:latest')
       if: ${{ failure() }}
