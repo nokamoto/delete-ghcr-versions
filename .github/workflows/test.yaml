@@ -9,7 +9,7 @@ on:
   - cron:  '0 0 * * *'
 
 jobs:
-  actions/delete-package-versions@v2:
+  delete-package-versions:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
