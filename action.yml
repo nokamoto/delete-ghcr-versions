@@ -1,0 +1,8 @@
+name: Delete GitHub Container Registry versions
+description: Github Action to delete container registry versions
+branding:
+  icon: alert-octagon
+  color: gray-dark
+runs:
+  using: node12
+  main: dist/index.js
